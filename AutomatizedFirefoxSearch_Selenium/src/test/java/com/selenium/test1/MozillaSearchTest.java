@@ -14,7 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class MozillaSearchTest {
 
-	//driver de navegador es lo que permite crear una instancia para simular una acción en navegador
+	//driver de navegador es lo que permite crear una instancia para simular una acciÃ³n en navegador
 
 	private WebDriver driver;
 	
@@ -35,9 +35,9 @@ public class MozillaSearchTest {
 	@Test
 	public void automatizedSearch() throws InterruptedException {	
 	driver.findElement(By.id("L2AGLb")).click(); //aceptar condiciones
-	WebElement searchbox = driver.findElement(By.name("q"));; //q = elemento de caja de búsqueda
+	WebElement searchbox = driver.findElement(By.name("q"));; //q = elemento de caja de bÃºsqueda
 	searchbox.clear(); //limpiar cualquier texto en caja de busqueda
-	searchbox.sendKeys("Hola Nuria, abro navegador, acepto condiciones y hago busqueda automatica"); //busqueda a introducir
+	searchbox.sendKeys("Youtube"); //busqueda a introducir
 	searchbox.submit(); //hacer busqueda
 	
 	//rango de tiempo para cargar la pagina y pasar test -doesnt work for me-
@@ -49,7 +49,7 @@ public class MozillaSearchTest {
 	Thread.sleep(5000);
 	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	//comprobar que ese sea el titulo en la ventana del browser
-	assertEquals("Hola Nuria, abro navegador, acepto condiciones y hago busqueda automatica - Buscar con Google", driver.getTitle()); 
+	assertEquals("Youtube - Buscar con Google", driver.getTitle()); 
 	}
 	
 	@After
