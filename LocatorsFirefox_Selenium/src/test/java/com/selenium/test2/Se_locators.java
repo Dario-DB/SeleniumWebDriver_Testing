@@ -7,25 +7,54 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import static org.junit.Assert.assertEquals;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 public class Se_locators {
 
 	static WebDriver driver;
 
-	public static void main(String[] args) throws InterruptedException {
-
+	@Before
+	public void setUp() {
+		
+		
 		try {
-			String actualResult = "";
-			String expectedResult = "$615.00";
-			String userPath = System.getProperty("user.dir");
-			System.out.println(userPath);
-			System.setProperty("webdriver.gecko.driver",
-					userPath + "/src/main/resources/FirefoxDriver/geckodriver.exe");
+		
+		String userPath = System.getProperty("user.dir");
+		System.out.println(userPath);
+		System.setProperty("webdriver.gecko.driver",
+				userPath + "/src/main/resources/FirefoxDriver/geckodriver.exe");
 
-			driver = new FirefoxDriver();
+		driver = new FirefoxDriver();
 
-			driver.get("http://live.guru99.com/index.php/checkout/cart");
-			driver.manage().window().maximize();
+		driver.get("http://live.guru99.com/index.php/checkout/cart");
+		driver.manage().window().maximize();
+	} catch (NoSuchElementException ne) {
 
+		System.err.println("WebElement not found: " + ne.getMessage());
+
+		// Browser broken while processing, various kind of webdriver errors
+	} catch (WebDriverException we) {
+
+		System.err.println("WebElement broken: " + we.getMessage());
+
+		//General exception
+	} catch (Exception ex) {
+
+		System.err.println(ex.getMessage());
+
+	}
+	}
+	
+	@Test
+	public void locatorsTest() throws InterruptedException {	
+		
+		String actualResult = "";
+		String expectedResult = "$615.00";
+		
+		try {
 			// TV SECTION
 			WebElement linkTV = driver.findElement(By.linkText("TV"));
 			linkTV.click();
@@ -40,12 +69,7 @@ public class Se_locators {
 			Thread.sleep(3000);
 
 			// TEST
-			if (actualResult.contentEquals(expectedResult)) {
-				System.out.println("Test passed. Actual result: " + actualResult + " is equal to " + expectedResult);
-			} else {
-				System.out
-						.println("Test failed. Actual result: " + actualResult + " is not equal to " + expectedResult);
-			}
+			assertEquals(actualResult, expectedResult); 
 
 			// Element not found
 		} catch (NoSuchElementException ne) {
@@ -62,10 +86,15 @@ public class Se_locators {
 
 			System.err.println(ex.getMessage());
 
-		} finally {
-
-			driver.quit();
 		}
+		
+		
 
+	}
+	
+	@After
+	public void kickOff() {
+		
+		driver.quit();
 	}
 }
