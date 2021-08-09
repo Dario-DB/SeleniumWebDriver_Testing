@@ -4,6 +4,6 @@ Code testing automation can be done using different tools. For the automation of
 
 2. Locators, WebElements and drivers error handling. In this script, the actions of going to the web, clicking a link, select an object, add it to cart and test if the price is equal to an expected result have been automated thanks to Selenium Web Driver, using geckodriver for Mozilla Firefox.
 
-3. Fill a form interacting with different types of web elements (input text, checks, select option in select web element, select option in dynamic react dropdown list, scroll down to a specific element, submit) automatically with Java and Selenium Web Driver framework.
+3. FillingForm. Fill a form interacting with different types of web elements (input text, checks, select option in select web element, select option in dynamic react dropdown list, scroll down to a specific element, submit) automatically with Java and Selenium Web Driver framework.
 
 
