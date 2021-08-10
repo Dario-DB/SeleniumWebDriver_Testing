@@ -6,4 +6,5 @@ Code testing automation can be done using different tools. For the automation of
 
 3. Filling Form. Fill a form interacting with different types of web elements (input text, checks, select option in select web element, select option in dynamic react dropdown list, scroll down to a specific element, submit) automatically with Java and Selenium Web Driver framework.
 
+4. Frames, Waits, Alerts. Simple exercise to work on the concepts of implicit and explicit waits, frames and alert elements. It consists of clicking on a button, filling in a text field that appears in an alert prompt and accept. After that, checking the output (test), which must contain the text entered in the alert.
 
